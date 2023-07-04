@@ -1,0 +1,23 @@
+@use "variables" as v;
+
+@each $key, $val in v.$colors {
+  .bg-#{$key} {
+    transition: background-color 0.25s ease-in-out;
+    background-color: $val;
+    @if ($key == "white") {
+      color: map-get(v.$colors, "black");
+    } @else {
+      color: map-get(v.$colors, "white");
+    }
+  }
+  .bg-#{$key}-hover:hover {
+    background-color: $val;
+    @if ($key == "white") {
+      background-color: darken($val, 10%);
+      color: lighten(map-get(v.$colors, "black"), 5%);
+    } @else {
+      background-color: lighten($val, 10%);
+      color: darken(map-get(v.$colors, "white"), 5%);
+    }
+  }
+}

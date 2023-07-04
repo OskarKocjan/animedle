@@ -1,0 +1,15 @@
+@use "styles" as s;
+
+.styled-button {
+  @extend %flex-center;
+  font-size: s.$font-size-xl;
+  height: 100px;
+  width: fit-content;
+  padding: s.$base-padding 100px;
+  border-radius: s.$base-border-radius;
+  box-shadow: s.$base-box-shadow;
+  cursor: pointer;
+  &:active {
+    transform: translateY(2px);
+  }
+}

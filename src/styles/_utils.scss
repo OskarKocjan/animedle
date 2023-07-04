@@ -1,0 +1,66 @@
+@use "variables" as v;
+@use "functions" as f;
+
+$utilities: (
+  "padding": (
+    "prefix": "p",
+    "values": f.get-map-number-variants(0, 8, v.$base-padding, 2),
+  ),
+  "padding-left": (
+    "prefix": "pl",
+    "values": f.get-map-number-variants(0, 8, v.$base-padding, 2),
+  ),
+  "padding-right": (
+    "prefix": "pr",
+    "values": f.get-map-number-variants(0, 8, v.$base-padding, 2),
+  ),
+  "padding-bottom": (
+    "prefix": "pb",
+    "values": f.get-map-number-variants(0, 8, v.$base-padding, 2),
+  ),
+  "padding-top": (
+    "prefix": "pt",
+    "values": f.get-map-number-variants(0, 8, v.$base-padding, 2),
+  ),
+  "margin": (
+    "prefix": "m",
+    "values": f.get-map-number-variants(0, 8, v.$base-margin, 2),
+  ),
+  "margin-left": (
+    "prefix": "ml",
+    "values": f.get-map-number-variants(0, 8, v.$base-margin, 2),
+  ),
+  "margin-right": (
+    "prefix": "mr",
+    "values": f.get-map-number-variants(0, 8, v.$base-margin, 2),
+  ),
+  "margi-bottom": (
+    "prefix": "mb",
+    "values": f.get-map-number-variants(0, 8, v.$base-margin, 2),
+  ),
+  "margin-top": (
+    "prefix": "mt",
+    "values": f.get-map-number-variants(0, 8, v.$base-margin, 2),
+  ),
+  "opacity": (
+    "prefix": "o",
+    "values": f.get-map-number-variants(10, 100, 0.01, 10),
+  ),
+);
+
+@each $property, $map in $utilities {
+  $prefix: map-get($map, "prefix");
+  $values: map-get($map, "values");
+
+  @each $k, $v in $values {
+    @if ($k == "default") {
+      .#{$prefix} {
+        #{$property}: $v;
+      }
+    } @else {
+      .#{$prefix}-#{$k} {
+        #{$property}: $v;
+      }
+    }
+  }
+}

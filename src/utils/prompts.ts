@@ -1,5 +1,5 @@
 const getRandomAnimeByScorePrompt = (minScore: number, url: string): string => {
-  const range = 0.3;
+  const range = 0.1;
   const randomNumber = Math.random() * (9 - minScore) + minScore;
   const roundedNumber = Math.round(randomNumber * 100) / 100;
 

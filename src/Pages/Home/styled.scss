@@ -1,0 +1,7 @@
+@use "styles" as s;
+.Home {
+  @extend %flex-center;
+  height: 100%;
+  max-width: 1200px;
+  width: 100%;
+}

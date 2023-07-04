@@ -1,0 +1,17 @@
+@function get-map-number-variants($start: 0, $end: 5, $val, $step: 1) {
+  $map-variants: ();
+  $i: $start;
+  $prefix: $start;
+
+  @while $i <= $end {
+    $map-variants: map-merge(
+      $map1: $map-variants,
+      $map2: (
+        $prefix + "": $i * $val,
+      ),
+    );
+    $i: $i + $step;
+    $prefix: $prefix + 1;
+  }
+  @return $map-variants;
+}
