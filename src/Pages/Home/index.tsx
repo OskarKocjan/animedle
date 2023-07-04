@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import "./styled.scss";
 import { getRandomAnimeByScorePrompt } from "utils/prompts";
-import { getRandomElement } from "utils/helpingFunctions";
+import {
+  getRandomElement,
+  getExplicitDataFromAnime,
+} from "utils/helpingFunctions";
 import axios from "axios";
 import Button from "Components/Button";
-import { AnimeDataProps } from "models/AnimeDataModel";
+import { AnimeDataProps, AnimeDataCuratedProps } from "models/AnimeDataModel";
 
 const apiUrl = "https://api.jikan.moe/v4/anime";
 
 const Home = () => {
-  const [animeToGuess, setAnimeToGuess] = useState<AnimeDataProps>();
+  const [animeToGuess, setAnimeToGuess] = useState<AnimeDataCuratedProps>();
 
-  const getAnime = async () => {
+  const getAnime = () => {
     axios.get(getRandomAnimeByScorePrompt(6.5, apiUrl)).then((res) => {
       const animeList = res.data.data;
       if (!animeList) return;
@@ -25,7 +28,7 @@ const Home = () => {
           anime = getRandomElement(animeList) as AnimeDataProps;
           nextId = anime.mal_id;
         } while (prevId === nextId);
-        setAnimeToGuess(anime);
+        setAnimeToGuess(getExplicitDataFromAnime(anime));
       }
     });
   };

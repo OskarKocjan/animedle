@@ -112,3 +112,21 @@ export interface AnimeDataProps {
     url: string;
   }[];
 }
+
+export interface AnimeDataCuratedProps {
+  mal_id: number;
+  img: string;
+  title: string;
+  titleEnglish: string;
+  type: string;
+  source: string;
+  episodes: number;
+  rating: string;
+  score: number;
+  popularity: number;
+  producers: string[];
+  licensors: string[];
+  studios: string[];
+  genres: string[];
+  themes: string[];
+}
