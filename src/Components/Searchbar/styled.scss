@@ -8,14 +8,33 @@ $inputToDropdownRatio: 1.02;
   flex-direction: column;
   width: $searchBarWidth;
   height: 20ch;
-  input {
-    font-size: s.$base-font-size;
+  .search-bar-container {
+    @extend %flex-center;
     width: 100%;
     height: 5ch;
     background-color: map-get(s.$colors, "white");
     border: 0;
     border-radius: s.$base-border-radius - 2px;
-    padding: s.$base-padding;
+    text-align: center;
+    // padding: s.$base-padding;
+    input {
+      font-size: s.$base-font-size;
+      font-weight: 300;
+      width: 85%;
+      height: 70%;
+      border: 0;
+    }
+    button {
+      transition: transform 0.05s ease-in-out;
+      margin-left: s.$base-margin;
+      cursor: pointer;
+      &:hover {
+        transform: translateY(-6%);
+      }
+      &:active {
+        transform: translateY(0);
+      }
+    }
   }
   .scrollable-div {
     margin: 0 auto;
@@ -33,6 +52,7 @@ $inputToDropdownRatio: 1.02;
     .dropdown-element {
       padding: s.$base-padding;
       border-radius: 2px;
+      cursor: pointer;
     }
   }
 }
