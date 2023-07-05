@@ -130,3 +130,9 @@ export interface AnimeDataCuratedProps {
   genres: string[];
   themes: string[];
 }
+
+export interface AnimeDataSearchBarProps {
+  mal_id: number;
+  title: string;
+  titleEnglish: string;
+}

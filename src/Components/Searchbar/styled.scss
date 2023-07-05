@@ -1,0 +1,38 @@
+@use "styles" as s;
+@use "sass:math";
+
+$searchBarWidth: 400px;
+$inputToDropdownRatio: 1.02;
+
+.SearchBar {
+  flex-direction: column;
+  width: $searchBarWidth;
+  height: 20ch;
+  input {
+    font-size: s.$base-font-size;
+    width: 100%;
+    height: 5ch;
+    background-color: map-get(s.$colors, "white");
+    border: 0;
+    border-radius: s.$base-border-radius - 2px;
+    padding: s.$base-padding;
+  }
+  .scrollable-div {
+    margin: 0 auto;
+    margin-top: 0.25ch;
+    max-height: 200px;
+    width: math.div(
+      $searchBarWidth - s.$base-border-radius,
+      $inputToDropdownRatio
+    );
+    overflow: scroll;
+    border-radius: 2px;
+    background-color: map-get(s.$colors, "white");
+    box-shadow: s.$base-box-shadow;
+    padding: 5px 0;
+    .dropdown-element {
+      padding: s.$base-padding;
+      border-radius: 2px;
+    }
+  }
+}

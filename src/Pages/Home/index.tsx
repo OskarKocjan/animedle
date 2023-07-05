@@ -7,6 +7,7 @@ import {
 } from "utils/helpingFunctions";
 import axios from "axios";
 import Button from "Components/Button";
+import Searchbar from "Components/Searchbar";
 import { AnimeDataProps, AnimeDataCuratedProps } from "models/AnimeDataModel";
 
 const apiUrl = "https://api.jikan.moe/v4/anime";
@@ -33,11 +34,10 @@ const Home = () => {
     });
   };
 
-  console.log(animeToGuess);
-
   return (
     <div className='Home'>
       <Button text='Get Anime to Guess!' color='primary' onClick={getAnime} />
+      <Searchbar />
     </div>
   );
 };
