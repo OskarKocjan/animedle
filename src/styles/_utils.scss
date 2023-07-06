@@ -46,6 +46,22 @@ $utilities: (
     "prefix": "o",
     "values": f.get-map-number-variants(10, 100, 0.01, 10),
   ),
+  "border-top-left-radius": (
+    "prefix": "btl",
+    "values": f.get-map-number-variants(0, 3, v.$base-border-radius, 1),
+  ),
+  "border-top-right-radius": (
+    "prefix": "btr",
+    "values": f.get-map-number-variants(0, 3, v.$base-border-radius, 1),
+  ),
+  "border-bottom-left-radius": (
+    "prefix": "bbl",
+    "values": f.get-map-number-variants(0, 3, v.$base-border-radius, 1),
+  ),
+  "border-bottom-right-radius": (
+    "prefix": "bbr",
+    "values": f.get-map-number-variants(0, 3, v.$base-border-radius, 1),
+  ),
 );
 
 @each $property, $map in $utilities {

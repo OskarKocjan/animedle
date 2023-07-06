@@ -116,6 +116,7 @@ export interface AnimeDataProps {
 export interface AnimeDataCuratedProps {
   mal_id: number;
   img: string;
+  imgxs: string;
   title: string;
   titleEnglish: string;
   type: string;

@@ -1,4 +1,5 @@
 import { AnimeDataProps, AnimeDataCuratedProps } from "models/AnimeDataModel";
+import { CardTileStateBg, CardTileInequality } from "models/CardModel";
 
 const getRandomElement = <T>(array: T[]): T | undefined => {
   if (array.length === 0) {
@@ -11,11 +12,13 @@ const getRandomElement = <T>(array: T[]): T | undefined => {
 };
 
 const getExplicitDataFromAnime = (
-  data: AnimeDataProps
-): AnimeDataCuratedProps => {
+  data: AnimeDataProps | undefined
+): AnimeDataCuratedProps | undefined => {
+  if (!data) return undefined;
   return {
     mal_id: data.mal_id,
     img: data.images.jpg.image_url,
+    imgxs: data.images.jpg.small_image_url,
     title: data.title,
     titleEnglish: data.title_english,
     type: data.type,
@@ -24,12 +27,73 @@ const getExplicitDataFromAnime = (
     rating: data.rating,
     score: data.score,
     popularity: data.popularity,
-    producers: data.producers.map((producer) => producer.name),
-    licensors: data.licensors.map((licensor) => licensor.name),
-    studios: data.studios.map((studio) => studio.name),
-    genres: data.genres.map((genre) => genre.name),
-    themes: data.themes.map((theme) => theme.name),
+    producers: getArrayNames(data.producers),
+    licensors: getArrayNames(data.licensors),
+    studios: getArrayNames(data.studios),
+    genres: getArrayNames(data.genres),
+    themes: getArrayNames(data.themes),
   };
 };
 
-export { getRandomElement, getExplicitDataFromAnime };
+const getArrayNames = (
+  arr: {
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }[]
+) => {
+  if (arr.length === 0) return ["None"];
+  return arr.map((e) => e.name);
+};
+
+const checkAnimeDataNumber = (
+  correctAnimeNumber: number,
+  guessedAnimeNumber: number
+): (CardTileStateBg | CardTileInequality)[] => {
+  if (correctAnimeNumber === guessedAnimeNumber)
+    return [CardTileStateBg.correct, CardTileInequality.equal];
+  if (correctAnimeNumber > guessedAnimeNumber)
+    return [CardTileStateBg.wrong, CardTileInequality.higher];
+
+  return [CardTileStateBg.wrong, CardTileInequality.lower];
+};
+
+const checkAnimeDataArray = (
+  correctAnimeArray: string[],
+  guessedAnimeArray: string[]
+) => {
+  const isSame = correctAnimeArray.every((str) =>
+    guessedAnimeArray.includes(str)
+  );
+  const hasSomeStrings = correctAnimeArray.some((str) =>
+    guessedAnimeArray.includes(str)
+  );
+
+  if (isSame && correctAnimeArray.length === guessedAnimeArray.length)
+    return CardTileStateBg.correct;
+  if (
+    (isSame && correctAnimeArray.length !== guessedAnimeArray.length) ||
+    hasSomeStrings
+  )
+    return CardTileStateBg.incorrect;
+
+  return CardTileStateBg.wrong;
+};
+
+const checkAnimeDataString = (
+  correctAnimeString: string,
+  guessedAnimeString: string
+) => {
+  return correctAnimeString === guessedAnimeString
+    ? CardTileStateBg.correct
+    : CardTileStateBg.wrong;
+};
+
+export {
+  getRandomElement,
+  getExplicitDataFromAnime,
+  checkAnimeDataNumber,
+  checkAnimeDataArray,
+  checkAnimeDataString,
+};

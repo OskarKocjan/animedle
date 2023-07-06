@@ -7,19 +7,30 @@ import {
 } from "utils/helpingFunctions";
 import { getRandomAnimeByScorePrompt } from "utils/prompts";
 import Searchbar from "Components/Searchbar";
+import Card from "Components/Card";
 
 const apiUrl = "https://api.jikan.moe/v4/anime";
 
 const GuessAnimeBySpec = () => {
   const [animeToGuess, setAnimeToGuess] = useState<AnimeDataCuratedProps>();
   const [animeIdToGuess, setAnimeIdToGuess] = useState<number>();
+  const [playerGuess, setPlayerGuess] = useState<AnimeDataCuratedProps>();
 
   useEffect(() => {
+    getNewAnimeToGuess();
+  }, []);
+
+  useEffect(() => {
+    if (!animeIdToGuess) return;
+    getPlayerGuess();
+  }, [animeIdToGuess]);
+
+  const getNewAnimeToGuess = () => {
     axios.get(getRandomAnimeByScorePrompt(6.5, apiUrl)).then((res) => {
       const animeList = res.data.data;
-      if (!animeList) return;
+      if (!animeList || animeList === undefined) return;
       if (!animeToGuess) {
-        setAnimeToGuess(getRandomElement(animeList));
+        setAnimeToGuess(getExplicitDataFromAnime(getRandomElement(animeList)));
       } else {
         const prevId = animeToGuess.mal_id;
         let nextId;
@@ -32,13 +43,24 @@ const GuessAnimeBySpec = () => {
       }
       console.log(animeToGuess);
     });
-  }, []);
+  };
 
-  console.log(animeIdToGuess);
+  console.log(animeToGuess);
+
+  //get this to use Effect
+  const getPlayerGuess = () => {
+    axios.get(`${apiUrl}/${animeIdToGuess}`).then((res) => {
+      const playerAnimeGuess = res.data.data; //maybe an error cuz res.data
+      setPlayerGuess(getExplicitDataFromAnime(playerAnimeGuess));
+    });
+  };
 
   return (
     <div>
       <Searchbar setAnimeIdToGuess={setAnimeIdToGuess} />
+      {animeToGuess !== undefined && playerGuess !== undefined && (
+        <Card anime={playerGuess} correctAnime={animeToGuess} />
+      )}
     </div>
   );
 };

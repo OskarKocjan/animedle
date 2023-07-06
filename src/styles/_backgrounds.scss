@@ -20,4 +20,7 @@
       color: darken(map-get(v.$colors, "white"), 5%);
     }
   }
+  .drop-shadow-#{$key} {
+    filter: drop-shadow(0 0 0.75rem $val);
+  }
 }

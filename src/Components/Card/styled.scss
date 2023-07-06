@@ -1,0 +1,17 @@
+@use "styles" as s;
+
+$cardHeight: 500px;
+$cardWidth: 250px;
+$numberOfCol: 2;
+$numberOfRows: 6;
+
+.anime-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-auto-rows: 1fr;
+  height: $cardHeight;
+  width: 250px;
+  border-radius: s.$base-border-radius;
+  font-weight: 300;
+}

@@ -1,0 +1,44 @@
+@use "styles" as s;
+@use "sass:math";
+@use "../Card/styled.scss" as c;
+
+.CardTile {
+  width: math.div(c.$cardWidth, c.$numberOfCol);
+  height: math.div(c.$cardHeight, c.$numberOfRows);
+  text-align: center;
+  place-self: center;
+  border: 4px groove map-get($map: s.$colors, $key: "secondary");
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  .card-title {
+    height: 20%;
+    font-weight: 500;
+  }
+  .card-data {
+    height: 80%;
+    overflow: scroll;
+    font-weight: 300;
+    .single-data {
+      @extend %flex-center;
+      height: 100%;
+    }
+    li {
+      list-style-type: none;
+    }
+    .up-arrow,
+    .down-arrow {
+      color: map-get(s.$colors, "black");
+      font-size: 60px;
+      position: absolute;
+      opacity: 40%;
+    }
+    .up-arrow {
+      transform: translateX(-50%) rotate(270deg);
+    }
+    .down-arrow {
+      transform: translateX(-50%) rotate(90deg);
+    }
+  }
+}

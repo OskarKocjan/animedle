@@ -5,8 +5,8 @@
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("../../../public/animeBackground.jpg");
+  background-repeat: repeat-y;
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center center;
   z-index: -3;
 }

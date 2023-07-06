@@ -25,7 +25,6 @@ const completeAnimeDataset = async (
       const { mal_id, title, title_english, score } = e;
       csvContent += `${mal_id},"${title}","${title_english}",${score}\n`;
     });
-    console.log(i);
     i = i + 1;
     page = page + 1;
     sleep(2000);
