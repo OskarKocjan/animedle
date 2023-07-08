@@ -54,81 +54,84 @@ const Card = ({ anime, correctAnime }: CardProps) => {
   console.log(correctAnime);
 
   return (
-    <div className='anime-card bg-white'>
-      <CardTile
-        data={anime.img}
-        classes={"btl-1"}
-        type={CardTileTypes.string}
-      />
-      <CardTile
-        data={anime.score}
-        classes={`btr-1 ${cardTilesStates?.score[0]}`}
-        type={CardTileTypes.number}
-        name='Score'
-        arrow={cardTilesStates?.score[1]}
-      />
-      <CardTile
-        data={anime.type}
-        type={CardTileTypes.string}
-        name='Type'
-        classes={`${cardTilesStates?.type}`}
-      />
-      <CardTile
-        data={anime.source}
-        type={CardTileTypes.string}
-        name='Source'
-        classes={`${cardTilesStates?.source}`}
-      />
-      <CardTile
-        data={anime.episodes}
-        type={CardTileTypes.number}
-        name='Episodes'
-        classes={`${cardTilesStates?.episodes[0]}`}
-        arrow={cardTilesStates?.episodes[1]}
-      />
-      <CardTile
-        data={anime.rating}
-        type={CardTileTypes.string}
-        name='Rating'
-        classes={`${cardTilesStates?.rating}`}
-      />
-      <CardTile
-        data={anime.popularity}
-        type={CardTileTypes.number}
-        name='Popularity'
-        classes={`${cardTilesStates?.popularity[0]}`}
-        arrow={cardTilesStates?.popularity[1]}
-      />
-      <CardTile
-        data={anime.producers}
-        type={CardTileTypes.array}
-        name='Producers'
-        classes={`${cardTilesStates?.producers}`}
-      />
-      <CardTile
-        data={anime.licensors}
-        type={CardTileTypes.array}
-        name='Licensors'
-        classes={`${cardTilesStates?.licensors}`}
-      />
-      <CardTile
-        data={anime.studios}
-        type={CardTileTypes.array}
-        name='Studios'
-        classes={`${cardTilesStates?.studios}`}
-      />
-      <CardTile
-        classes={`bbl-1 ${cardTilesStates?.genres}`}
-        data={anime.genres}
-        type={CardTileTypes.array}
-        name='Genres'
-      />
-      <CardTile
-        classes={`bbr-1 ${cardTilesStates?.genres}`}
-        data={anime.themes}
-        type={CardTileTypes.array}
-        name='Themes'
-      />
+    <div className='card-container'>
+      <div className='card-title'>{anime.title}</div>
+      <div className='anime-card bg-white'>
+        <CardTile
+          data={anime.img}
+          classes={"btl-1"}
+          type={CardTileTypes.string}
+        />
+        <CardTile
+          data={anime.score}
+          classes={`btr-1 ${cardTilesStates?.score[0]}`}
+          type={CardTileTypes.number}
+          name='Score'
+          arrow={cardTilesStates?.score[1]}
+        />
+        <CardTile
+          data={anime.type}
+          type={CardTileTypes.string}
+          name='Type'
+          classes={`${cardTilesStates?.type}`}
+        />
+        <CardTile
+          data={anime.source}
+          type={CardTileTypes.string}
+          name='Source'
+          classes={`${cardTilesStates?.source}`}
+        />
+        <CardTile
+          data={anime.episodes}
+          type={CardTileTypes.number}
+          name='Episodes'
+          classes={`${cardTilesStates?.episodes[0]}`}
+          arrow={cardTilesStates?.episodes[1]}
+        />
+        <CardTile
+          data={anime.rating}
+          type={CardTileTypes.string}
+          name='Rating'
+          classes={`${cardTilesStates?.rating}`}
+        />
+        <CardTile
+          data={anime.popularity}
+          type={CardTileTypes.number}
+          name='Popularity'
+          classes={`${cardTilesStates?.popularity[0]}`}
+          arrow={cardTilesStates?.popularity[1]}
+        />
+        <CardTile
+          data={anime.producers}
+          type={CardTileTypes.array}
+          name='Producers'
+          classes={`${cardTilesStates?.producers}`}
+        />
+        <CardTile
+          data={anime.licensors}
+          type={CardTileTypes.array}
+          name='Licensors'
+          classes={`${cardTilesStates?.licensors}`}
+        />
+        <CardTile
+          data={anime.studios}
+          type={CardTileTypes.array}
+          name='Studios'
+          classes={`${cardTilesStates?.studios}`}
+        />
+        <CardTile
+          classes={`bbl-1 ${cardTilesStates?.genres}`}
+          data={anime.genres}
+          type={CardTileTypes.array}
+          name='Genres'
+        />
+        <CardTile
+          classes={`bbr-1 ${cardTilesStates?.themes}`}
+          data={anime.themes}
+          type={CardTileTypes.array}
+          name='Themes'
+        />
+      </div>
     </div>
   );
 };

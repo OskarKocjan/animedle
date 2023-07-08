@@ -42,7 +42,7 @@ const getArrayNames = (
     name: string;
     url: string;
   }[]
-) => {
+): string[] => {
   if (arr.length === 0) return ["None"];
   return arr.map((e) => e.name);
 };

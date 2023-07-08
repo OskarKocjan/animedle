@@ -8,13 +8,15 @@ import {
 import { getRandomAnimeByScorePrompt } from "utils/prompts";
 import Searchbar from "Components/Searchbar";
 import Card from "Components/Card";
+import CardGrid from "Components/CardGrid";
+import "./styled.scss";
 
 const apiUrl = "https://api.jikan.moe/v4/anime";
 
 const GuessAnimeBySpec = () => {
   const [animeToGuess, setAnimeToGuess] = useState<AnimeDataCuratedProps>();
   const [animeIdToGuess, setAnimeIdToGuess] = useState<number>();
-  const [playerGuess, setPlayerGuess] = useState<AnimeDataCuratedProps>();
+  const [playerGuess, setPlayerGuess] = useState<AnimeDataCuratedProps[]>([]);
 
   useEffect(() => {
     getNewAnimeToGuess();
@@ -50,16 +52,25 @@ const GuessAnimeBySpec = () => {
   //get this to use Effect
   const getPlayerGuess = () => {
     axios.get(`${apiUrl}/${animeIdToGuess}`).then((res) => {
-      const playerAnimeGuess = res.data.data; //maybe an error cuz res.data
-      setPlayerGuess(getExplicitDataFromAnime(playerAnimeGuess));
+      const playerAnimeGuess = res.data.data as AnimeDataProps; //maybe an error cuz res.data
+      const curatedPlayerAnimeGuess =
+        getExplicitDataFromAnime(playerAnimeGuess);
+      if (curatedPlayerAnimeGuess === undefined) return;
+      //check here
+      if (playerGuess === undefined || playerGuess.length === 0) {
+        setPlayerGuess([curatedPlayerAnimeGuess]);
+      } else {
+        setPlayerGuess([...playerGuess, curatedPlayerAnimeGuess]);
+      }
+      console.log(curatedPlayerAnimeGuess);
     });
   };
 
   return (
-    <div>
+    <div className='GuessAnimeBySpec'>
       <Searchbar setAnimeIdToGuess={setAnimeIdToGuess} />
       {animeToGuess !== undefined && playerGuess !== undefined && (
-        <Card anime={playerGuess} correctAnime={animeToGuess} />
+        <CardGrid animes={playerGuess} correctAnime={animeToGuess} />
       )}
     </div>
   );

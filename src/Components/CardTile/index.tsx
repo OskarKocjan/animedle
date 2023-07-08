@@ -12,7 +12,7 @@ const CardTile = ({ name, data, type, classes, arrow }: CardTileProps) => {
       {name === undefined && (
         <img src={data as string} alt='anime' className='btl-1' />
       )}
-      <div className='card-title'>{name}</div>
+      <div className='card-tile-title'>{name}</div>
 
       <div className='card-data'>
         {type === CardTileTypes.number &&

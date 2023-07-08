@@ -1,0 +1,10 @@
+@use "styles" as s;
+
+.CardGrid {
+  @extend %flex-center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 90%;
+  gap: s.$base-gap;
+  margin: s.$base-margin s.$base-margin * 3;
+}

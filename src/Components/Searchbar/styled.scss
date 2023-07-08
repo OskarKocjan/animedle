@@ -5,9 +5,9 @@ $searchBarWidth: 400px;
 $inputToDropdownRatio: 1.02;
 
 .SearchBar {
-  flex-direction: column;
   width: $searchBarWidth;
   height: 20ch;
+  margin: s.$base-margin auto;
   .search-bar-container {
     @extend %flex-center;
     width: 100%;

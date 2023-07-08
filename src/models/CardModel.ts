@@ -45,4 +45,7 @@ export interface CardTileProps {
   arrow?: CardTileStateBg | CardTileInequality;
 }
 
-export interface CheckAnimeData {}
+export interface CardGridProps {
+  animes: AnimeDataCuratedProps[];
+  correctAnime: AnimeDataCuratedProps;
+}
