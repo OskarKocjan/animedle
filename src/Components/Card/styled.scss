@@ -9,10 +9,13 @@ $numberOfRows: 6;
   color: map-get($map: s.$colors, $key: "white");
   text-align: center;
   width: $cardWidth;
-  overflow: scroll;
+  overflow: auto;
   scrollbar-width: none;
   height: 2ch;
   margin-bottom: s.$base-margin;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .anime-card {

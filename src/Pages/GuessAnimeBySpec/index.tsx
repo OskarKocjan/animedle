@@ -59,8 +59,6 @@ const GuessAnimeBySpec = () => {
       });
   };
 
-  console.log(animeToGuess);
-
   const getAnimeRange = (path: string) => {
     const range = +path.split("/").slice(-1)[0];
     if (rangeNumbers.includes(range)) return range;
@@ -91,7 +89,6 @@ const GuessAnimeBySpec = () => {
         setPlayerGuess([...playerGuess, curatedPlayerAnimeGuess]);
       }
       setLives(lives - 1);
-      console.log(curatedPlayerAnimeGuess);
     });
   };
 

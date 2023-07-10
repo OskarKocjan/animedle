@@ -18,7 +18,7 @@
   }
   .card-data {
     height: 80%;
-    overflow: scroll;
+    overflow: auto;
     font-weight: 300;
     .single-data {
       @extend %flex-center;

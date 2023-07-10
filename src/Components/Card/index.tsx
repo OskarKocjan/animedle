@@ -51,8 +51,6 @@ const Card = ({ anime, correctAnime }: CardProps) => {
 
   if (!anime || anime === undefined) return <>Error</>;
 
-  console.log(correctAnime);
-
   return (
     <div className='card-container'>
       <div className='card-title'>{anime.title}</div>

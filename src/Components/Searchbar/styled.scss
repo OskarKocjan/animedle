@@ -7,7 +7,8 @@ $inputToDropdownRatio: 1.02;
 .SearchBar {
   width: $searchBarWidth;
   height: 20ch;
-  margin: s.$base-margin auto;
+  margin: s.$base-margin * 2 auto;
+  z-index: 10;
   .search-bar-container {
     @extend %flex-center;
     width: 100%;
@@ -39,12 +40,15 @@ $inputToDropdownRatio: 1.02;
   .scrollable-div {
     margin: 0 auto;
     margin-top: 0.25ch;
-    max-height: 200px;
+    max-height: 80%;
     width: math.div(
       $searchBarWidth - s.$base-border-radius,
       $inputToDropdownRatio
     );
-    overflow: scroll;
+    overflow: auto;
+    &::-webkit-scrollbar-thumb {
+      background-color: grey;
+    }
     border-radius: 2px;
     background-color: map-get(s.$colors, "white");
     box-shadow: s.$base-box-shadow;
