@@ -1,0 +1,13 @@
+@use "styles" as s;
+
+.LivesBar {
+  font-size: s.$font-size-xxl;
+  .heart-container {
+    @extend %flex-center;
+    color: map-get($map: s.$colors, $key: "red");
+  }
+  .number-of-lives {
+    text-align: center;
+    color: map-get($map: s.$colors, $key: "red");
+  }
+}

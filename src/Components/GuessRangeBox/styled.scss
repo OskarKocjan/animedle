@@ -1,0 +1,48 @@
+@use "styles" as s;
+
+$lightblue: lighten(
+  map-get(
+    $map: s.$colors,
+    $key: "primary",
+  ),
+  40%
+);
+
+.GuessRangeBox {
+  @extend %flex-center;
+  border-radius: s.$base-border-radius;
+  width: fit-content;
+  font-weight: 300;
+  .input-box {
+    cursor: pointer;
+    width: 5ch;
+    text-align: center;
+    border: solid 1px lighten(map-get($map: s.$colors, $key: "black"), 75%);
+    color: lighten(map-get($map: s.$colors, $key: "black"), 40%);
+    background-color: map-get($map: s.$colors, $key: "white");
+    font-size: 2rem;
+    height: 100%;
+    padding: s.$base-padding;
+    transition: background-color 0.2s ease;
+    &:first-of-type {
+      border-radius: s.$base-border-radius 0 0 s.$base-border-radius;
+    }
+    &:last-of-type {
+      border-radius: 0 s.$base-border-radius s.$base-border-radius 0;
+    }
+    &:hover {
+      background-color: $lightblue;
+      border-color: $lightblue;
+    }
+  }
+  input[type="radio"]:checked + label {
+    background-color: map-get($map: s.$colors, $key: "primary");
+    color: map-get($map: s.$colors, $key: "white");
+  }
+
+  input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+  }
+}

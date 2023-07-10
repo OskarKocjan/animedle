@@ -5,7 +5,7 @@ import Error from "Pages/Error";
 
 const routesData: RouteProps[] = [
   { path: "/", Component: Home, key: 1 },
-  { path: "/guessanimebyspec", Component: GuessAnimeBySpec, key: 2 },
+  { path: "/guessanimebyspec/:range", Component: GuessAnimeBySpec, key: 2 },
   { path: "*", Component: Error, key: 3 },
 ];
 

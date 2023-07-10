@@ -1,7 +1,8 @@
 import React from "react";
+import "./styled.scss";
 
 const Error = () => {
-  return <div>Error</div>;
+  return <div className='Error'>Error</div>;
 };
 
 export default Error;

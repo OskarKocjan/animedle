@@ -1,0 +1,21 @@
+@use "styles" as s;
+.GameOver {
+  width: 100%;
+  @extend %flex-center;
+  flex-direction: column;
+  gap: s.$base-gap;
+  .game-over-container {
+    width: fit-content;
+    @extend %flex-center;
+    box-shadow: s.$base-box-shadow;
+    flex-direction: column;
+    gap: s.$base-gap;
+    color: aliceblue;
+    padding: s.$base-padding * 2;
+    border-radius: s.$base-border-radius;
+  }
+  .text-container {
+    text-align: center;
+    width: 25ch;
+  }
+}
