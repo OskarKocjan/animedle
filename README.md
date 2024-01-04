@@ -1,4 +1,4 @@
-# This project is hosted at:
+# This project is hosted at
 https://animedle-chi.vercel.app/
 
 # Getting Started with Create React App
